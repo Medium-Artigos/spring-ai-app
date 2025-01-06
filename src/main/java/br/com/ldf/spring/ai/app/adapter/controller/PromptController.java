@@ -20,7 +20,6 @@ public class PromptController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Generation>> postPrompt(@RequestBody @Validated InputPromptRequest request) {
-        var response = promptService.evaluate(request);
-        return ResponseEntity.ok(response.getResults());
+        return ResponseEntity.ok(promptService.evaluate(request).getResults());
     }
 }
