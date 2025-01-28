@@ -1,6 +1,5 @@
-package br.com.ldf.spring.ai.app.core.service;
+package br.com.ldf.spring.ai.app.service;
 
-import br.com.ldf.spring.ai.app.adapter.dto.InputPromptRequest;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.stereotype.Service;
@@ -14,9 +13,9 @@ public class PromptService {
         this.client = builder.build();
     }
 
-    public ChatResponse evaluate(InputPromptRequest request) {
+    public ChatResponse evaluate(String text) {
         return client.prompt()
-                .user(request.text())
+                .user(text)
                 .call()
                 .chatResponse();
     }
